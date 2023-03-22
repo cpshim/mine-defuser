@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package rover;
+
+service RoverGuide {
+  rpc GetMap (MapRequest) returns (stream MapReply) {}
+
+  rpc GetCommands (CommandsRequest) returns (stream CommandsReply) {}
+
+  rpc GetMineNum (MineNumRequest) returns (MineNumReply) {}
+
+  rpc Success (SuccessRequest) returns (SuccessReply) {}
+
+  rpc SharePIN (ShareRequest) returns (ShareReply) {}
+}
+
+message MapRequest {
+  string map = 1;
+}
+
+message CommandsRequest {
+  string commands = 1;
+}
+
+message MineNumRequest {
+  int32 mine_number = 1;
+}
+
+message gSuccessRequest {
+  string message = 1;
+}
+
+message ShareRequest {
+  int64 pin = 1;
+}
+
+message MapReply {
+  string size = 1;
+  string map = 2;
+}
+
+message CommandsReply {
+  string commands = 1;
+}
+
+message MineNumReply {
+  string mine = 1;
+}
+
+message SuccessReply {
+  string message = 1;
+}
+
+message ShareReply {
+  string message = 1;
+}
